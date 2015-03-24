@@ -39,12 +39,22 @@ public:
 		Realloc(SIZE_MEM_BUFF)
 	}
 
-	DynamicArray(unsigned int cap) :numElements(0), memCapacity(0), datal(NULL){}
+	DynamicArray( unsigned int cap) 
+	{
+		unsigned int numElements = 0;
+		unsigned int memCapacity(cap);
+		TYPE* data = NULL;
+	}
 
 	//destructor
 	~DynamicArray()
 	{
-		delete data[];
+		delete data;
+	}
+
+	unsigned int GetCapacity()
+	{
+		return memCapacity;
 	}
 
 	//put value to the last place of the list
@@ -99,6 +109,16 @@ public:
 		numElements++;
 
 		return true;		
+	}
+
+	const int RemoveWastedMemory()
+	{
+		 if(numElements < memCapacity)
+			{
+				Realloc(numElements);
+				int memRemoved = memCapacity - numElements;
+				return memRemoved;
+			}		
 	}
 
 	// Operators

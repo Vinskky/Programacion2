@@ -7,7 +7,7 @@
 
 #define TMP_STRING_SIZE	4096
 
-template <class TYPE0>
+
 class String
 {
 private:
@@ -173,7 +173,31 @@ public:
 
 		return(*this);
 	}
+	/*
 
+	const String& prefix(const char* str)
+	{
+		if (str != NULL)
+		{
+			unsigned int need_size = strlen(str) + strlen(string) + 1;
+			if (need_size > size)
+			{
+				char* tmp = string;
+				Alloc(need_size);
+				strcpy_s(string, size, tmp);
+				delete[] tmp;
+				for (int i = 0; i > str->size; i++)
+				{
+					
+				}
+			}
+
+			
+		}
+		return(*this);
+	}
+
+	*/
 	void Clear()
 	{
 		string[0] = '\0';

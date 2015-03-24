@@ -103,6 +103,20 @@ public:
 		return(true);
 	}
 
+	/*
+	const unsigned int delNodes(unsigned int position, unsigned int numNodes)
+	{
+		if (start != NULL)
+		{
+
+		}
+	}
+
+	*/
+	int Count()
+	{
+		return size;
+	}
 
 	void Clear()
 	{

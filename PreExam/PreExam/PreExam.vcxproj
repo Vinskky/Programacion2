@@ -67,6 +67,7 @@
     <ClInclude Include="DoublyList.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Point2d.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="sList.h" />
     <ClInclude Include="String.h" />
   </ItemGroup>
