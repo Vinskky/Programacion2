@@ -52,6 +52,24 @@ public:
 			node->VisitAll(list);
 	}
 
+	//visit all with iterative functions
+
+	void VisitAllPreOrder(sList <TYPE>* list, Node<TYPE>* parent)
+	{
+		list->Add(rootNode);
+			for (int i = 0; i < list->count; i++)
+			{
+				//pila
+				list.Add(data);
+				if (parent->son = NULL)
+				{
+
+				}
+			}
+		
+
+	}
+
 };
 
 
