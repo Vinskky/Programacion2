@@ -70,6 +70,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="sList.h" />
     <ClInclude Include="String.h" />
+    <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
