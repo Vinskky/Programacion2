@@ -96,7 +96,7 @@ public:
 			if (parent->son->start != NULL )
 			{
 				stack->Push(parent->data);
-				tmp->data = list->start->data;
+				//tmp->data = list->start->data;
 			}
 			else 
 			{
@@ -107,8 +107,8 @@ public:
 					tmp->data = parent->data;
 				}
 			}
-			stack->Pop(parent->data);
-			parent->data = tmp->data;
+			tmp = stack->Pop(parent->data);
+			//parent->data = tmp->data;
 		}
 	}
 
