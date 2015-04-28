@@ -9,15 +9,18 @@ struct NodeTree
 {
 	TYPE data;
 	NodeTree*dad;
-	DoublyList son;
+	DoublyList<TYPE> son;
 };
 
 template <class TYPE>
 class Tree
 {
 private:
-	NodeTree* rootNode;
+	NodeTree<TYPE>* rootNode;
 public:
+
+	Tree() : rootNode(NULL)
+	{}
 
 	Tree(TYPE value)
 	{
@@ -28,10 +31,10 @@ public:
 	void Add(const TYPE& value)
 	{
 		NodeTree<TYPE>* nou = new NodeTree<TYPE>(value);
-		rootNode->son.add(nou);
+		rootNode->son.Add(nou);
 	}
 
-	void Add(const TYPE& value, const NodeTree* parent)
+	void Add(const TYPE& value, const NodeTree<TYPE>* parent)
 	{
 		NodeTree<TYPE>* nou = new NodeTree<TYPE>(value);
 		parent->son.Add(nou);
@@ -129,6 +132,18 @@ public:
 	void Clear()
 	{
 
+	}
+
+	//Utils
+
+	const bool IsEmpty()
+	{
+		return rootNode = NULL;
+	}
+
+	const NodeTree<TYPE>* GetRoot()
+	{
+		return rootNode;
 	}
 };
 
