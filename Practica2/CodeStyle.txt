@@ -1,0 +1,18 @@
+Files
+	PascalCase 
+	
+Variables
+	camelCase without Hungarian notation 
+	Ex: int data = 0;
+
+Class
+	PascalCase without Hungarian notation
+	class Punt2d
+	{
+	};
+
+Methods
+	PascalCase without Hungarian notation
+	Ex: void GetX ()
+	{
+	}
