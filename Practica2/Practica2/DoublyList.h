@@ -135,6 +135,32 @@ public:
 		size = 0;
 	}
 
+	ListItem<tdata>* getByIndex(const unsigned int _i) const
+	{
+		ListItem<tdata>* tmp = start;
+		for (unsigned int i = 0; i < _i; i++)
+		{
+			if (tmp == NULL)
+			{
+				return 0;
+				break;
+			}
+			tmp = tmp->next;
+		}
+		return tmp;
+	}
+
+	//utils
+
+	node* GetFirst()
+	{
+		return start;
+	}
+	node* GetLast()
+	{
+		return end;
+	}
+
 };
 
 #endif _DoublyList_H_
