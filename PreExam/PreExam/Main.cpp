@@ -14,9 +14,11 @@ int main(int argc, char** argv)
 
 	for (int i = 0; i < a.GetNumElements(); i++)
 	{
-		std::cout << &a[i] << std::endl;
+		std::cout << *a.At(i) << std::endl;
 	}
+	std::cout << "Bubble counter: " << a.Bubble() << std::endl;
 
+	getchar();
 	return 0;
 
 }

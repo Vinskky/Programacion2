@@ -120,6 +120,13 @@ public:
 				return memRemoved;
 			}		
 	}
+	TYPE* At(unsigned int index)
+	{
+		TYPE* result = NULL;
+		if (index < numElements)
+			return result = &data[index];
+		return result;
+	}
 
 	void Swap(TYPE& a, TYPE& b)
 	{
@@ -129,8 +136,10 @@ public:
 		b = tmp;
 	}
 
-	void Bubble()
+	int Bubble()
 	{
+		int counter = 0;
+
 		bool end = false;
 
 		while (end == false)
@@ -139,6 +148,7 @@ public:
 
 			for (unsigned int i = 0; i < numElements - 1; i++)
 			{
+				counter++;
 				if (data[i] > data[i + 1])
 				{
 					Swap(data[i], data[i + 1]);
@@ -146,6 +156,7 @@ public:
 				}
 			}
 		}
+		return counter;
 	}
 
 	// Operators
