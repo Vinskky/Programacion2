@@ -34,9 +34,9 @@ private:
 
 public:
 	//Constructors
-	DynamicArray():numElements(0), memCapacity(0), datal(NULL)
+	DynamicArray():numElements(0), memCapacity(0), data(NULL)
 	{
-		Realloc(SIZE_MEM_BUFF)
+		Realloc(SIZE_MEM_BUFF);
 	}
 
 	DynamicArray( unsigned int cap) 
@@ -121,6 +121,33 @@ public:
 			}		
 	}
 
+	void Swap(TYPE& a, TYPE& b)
+	{
+		TYPE tmp;
+		tmp = a;
+		a = b;
+		b = tmp;
+	}
+
+	void Bubble()
+	{
+		bool end = false;
+
+		while (end == false)
+		{
+			end = true;
+
+			for (unsigned int i = 0; i < numElements - 1; i++)
+			{
+				if (data[i] > data[i + 1])
+				{
+					Swap(data[i], data[i + 1]);
+					end = false;
+				}
+			}
+		}
+	}
+
 	// Operators
 	TYPE& operator[](unsigned int index)
 	{
@@ -134,6 +161,10 @@ public:
 		return data[index];
 	}
 	
+	int GetNumElements()
+	{
+		return numElements;
+	}
 };
 
 

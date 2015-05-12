@@ -1,7 +1,7 @@
 #include "DynamicArray.h"
 #include <iostream>
 
-int main(int argc, char** argv)
+int main()
 {
 	DynamicArray<int> a;
 	a.PushBack(5);
@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 	a.PushBack(10);
 	a.PushBack(8);
 	a.PushBack(3);
-
+	
 	a.Bubble();
 
 	for (int i = 0; i < a.GetNumElements(); i++)
@@ -18,5 +18,5 @@ int main(int argc, char** argv)
 	}
 
 	return 0;
-
+	
 }
