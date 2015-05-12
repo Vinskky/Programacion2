@@ -159,6 +159,29 @@ public:
 		return counter;
 	}
 
+	int BubbleOptim()
+	{
+		int counter = 0;
+
+		bool end = false;
+
+		while (end == false)
+		{
+			end = true;
+
+			for (unsigned int i = 0; i < numElements - 1; i++)
+			{
+				counter++;
+				if (data[i] > data[i + 1])
+				{
+					Swap(data[i], data[i + 1]);
+					end = false;
+				}
+			}
+		}
+		return counter;
+	}
+
 	// Operators
 	TYPE& operator[](unsigned int index)
 	{
