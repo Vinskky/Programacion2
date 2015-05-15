@@ -17,7 +17,7 @@ private:
 	void Alloc(unsigned int newSize)
 	{
 		size = newSize;
-		string = new string[size];
+		String* str = new String[size];
 	}
 
 public:
@@ -30,7 +30,7 @@ public:
 	String(unsigned int newSize)
 	{
 		if (size > 0)
-			Alloc(newSize)
+			Alloc(newSize);
 		else
 			Alloc(1);
 		Clear();
@@ -38,8 +38,8 @@ public:
 
 	String(const String& str)
 	{
-		Alloc(str.string);
-		strcpy_s(string, size, str);
+		Alloc(*str.string);
+		strcpy_s(string, size, str.string);
 	}
 
 	String(const char *format, ...)
@@ -57,7 +57,7 @@ public:
 			if (res > 0)
 			{
 				Alloc(res + 1);
-				strcpy_s(str, size, tmp);
+				strcpy_s(string, size, tmp);
 			}
 		}
 		if (size == 0)
@@ -102,10 +102,10 @@ public:
 
 	const String& operator= (const String& str)
 	{
-		if (strlen(str) + 1 > size)
+		if (strlen(str.string) + 1 > size)
 		{
 			delete[] string;
-			Alloc(strlen(str) + 1);
+			Alloc(strlen(str.string) + 1);
 		}
 		else
 			Clear();
@@ -139,7 +139,7 @@ public:
 
 	const String& operator+= (const String& str)
 	{
-		unsigned int need_size = strlen(str) + strlen(string) + 1;
+		unsigned int need_size = strlen(str.string) + strlen(string) + 1;
 
 		if (need_size > size)
 		{
@@ -203,6 +203,22 @@ public:
 		string[0] = '\0';
 	}
 
+	int Trim()
+	{
+		int tmp = this->size;
+		int counter = 0;
+
+		for (int i = 0; i < tmp - 1; i++)
+		{
+			if (this->string[i] == ' ' && this->string[i + 1] != ' ')
+			{
+				this->string[i] = this->string[i + 1];
+				counter++;
+			}
+		}
+		this->size = tmp - counter;
+		return counter;
+	}
 	
 };
 

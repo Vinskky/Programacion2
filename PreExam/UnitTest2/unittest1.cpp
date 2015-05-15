@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
+#include "..\PreExam\String.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -11,7 +12,17 @@ namespace UnitTest2
 		
 		TEST_METHOD(TestMethod1)
 		{
-			// TODO: Agregar aquí el código de la prueba
+			String chain("Hola");
+			String chain2("  Hola");
+			String chain3("  Hola  ");
+
+			
+			chain2.Trim();
+			chain3.Trim();
+
+			Assert::AreEqual(chain.Trim(), 0);
+			Assert::AreEqual(chain.Trim(), 2);
+			Assert::AreEqual(chain.Trim(), 4);
 		}
 
 	};
