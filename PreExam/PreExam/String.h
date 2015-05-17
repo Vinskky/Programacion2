@@ -203,7 +203,7 @@ public:
 		string[0] = '\0';
 	}
 
-	int Trim()
+	/*int Trim()
 	{
 		int tmp = this->size;
 		int counter = 0;
@@ -218,7 +218,35 @@ public:
 		}
 		this->size = tmp - counter;
 		return counter;
+	}*/
+	
+	void Trim()
+	{
+		//char* end = string;
+		//cutRight
+		//while (*--end != ' ') end = '\0';
+		bool a;
+	//Right Cut
+		for (int i = size - 1; i > 0 && a == false; i--)
+			{
+				if (string[i] = ' ')
+				{
+					string[i] = '\0';
+					a = false;
+				}
+				else
+				{
+					a = true;
+				}
+			}
+		a = false;
+		for (int z = 0; z < size - 1 && a == false; z++)
+		{
+			if (string[z] == ' ') string[z] = '\0';
+			else a = true;
+		}
 	}
+
 	
 };
 

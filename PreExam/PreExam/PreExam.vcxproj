@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="DoublyList.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Point2d.h" />
