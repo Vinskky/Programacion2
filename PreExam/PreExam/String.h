@@ -202,23 +202,6 @@ public:
 	{
 		string[0] = '\0';
 	}
-
-	/*int Trim()
-	{
-		int tmp = this->size;
-		int counter = 0;
-
-		for (int i = 0; i < tmp - 1; i++)
-		{
-			if (this->string[i] == ' ' && this->string[i + 1] != ' ')
-			{
-				this->string[i] = this->string[i + 1];
-				counter++;
-			}
-		}
-		this->size = tmp - counter;
-		return counter;
-	}*/
 	
 	void Trim()
 	{
@@ -245,6 +228,28 @@ public:
 			if (string[z] == ' ') string[z] = '\0';
 			else a = true;
 		}
+	}
+
+	void SubString(const String& WordToChange, const String& WordSub)const
+	{
+		int countWordsToChange, startString;
+		bool checker = true;
+		//counting number of words to change
+		for (int i = 0; i < this->size - 1; i++)
+		{
+			for (int z = 0; z < WordToChange.size - 1 && checker == true; z++)
+			{
+				if (this->string[i] != WordToChange.string[z])
+					checker = false;
+			}
+			if (checker == true)
+			{
+				countWordsToChange++;
+			}
+				
+		}
+
+
 	}
 
 	
