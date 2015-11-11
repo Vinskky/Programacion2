@@ -106,7 +106,7 @@ public:
 			capacity = Array.numElements;
 			data = new TYPE[capacity];
 			memcpy(data, tmp, Array.numElements * sizeof(TYPE));
-			delete[tmp];
+			delete[]tmp;
 		}
 		memcpy(data, Array.data, Array.numElements*sizeof(TYPE));
 		return *this;
@@ -129,7 +129,7 @@ public:
 		TYPE* tmp = data;
 		data = new TYPE[capacity];
 		uint tmp2 = 0;
-		for (int i = (numElements - 1); i >= 0; i--)
+		for (uint i = (numElements - 1); i >= 0; i--)
 		{
 			data[tmp2++] = tmp[i];
 		}
@@ -155,7 +155,7 @@ public:
 		{
 			capacity += BLOCK;
 			memcpy(data, tmp, (position - 1) *sizeof(TYPE));
-			for (int i = numElements; i > position; i--)
+			for (uint i = numElements; i > position; i--)
 			{
 				data[i] = tmp[i - 1];
 			}
@@ -163,7 +163,7 @@ public:
 		}
 		else
 		{	
-			for (int i = (numElements - 1); i > position; i--)
+			for (uint i = (numElements - 1); i > position; i--)
 			{
 				data[i] = tmp[i - 1];
 			}
