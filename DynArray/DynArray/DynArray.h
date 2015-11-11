@@ -112,19 +112,31 @@ public:
 		return *this;
 	}
 
-	TYPE operator[](uint position)const
+	const TYPE& operator[](uint position)const
 	{
-		if (position > capacity)
-			return NULL;
+		assert(position > capacity)
+
 		return data[position];
 	}
 
-	TYPE Pop_Back()
+	TYPE& operator[](uint position)
 	{
-		return data[--numElements];
+		assert(position > capacity)
+
+		return data[position];
 	}
 
-	void Flip()
+	bool Pop_Back(TYPE& value)
+	{
+		if (numElements > 0)
+		{
+			value = data[--numElements];
+			return true;
+		}
+		return false;
+	}
+
+	void Flip()//retocar fer un swapp per intercanviar 
 	{
 		TYPE* tmp = data;
 		data = new TYPE[capacity];
@@ -142,6 +154,7 @@ public:
 		{
 			TYPE* tmp = data;
 			data = new TYPE[numElements];
+			capacity = numElements;
 			memcpy(data, tmp, numElements*sizeof(TYPE));
 			delete[]tmp;
 		}
@@ -154,7 +167,7 @@ public:
 		if (numElements > capacity)
 		{
 			capacity += BLOCK;
-			memcpy(data, tmp, (position - 1) *sizeof(TYPE));
+			memcpy(data, tmp, (position) *sizeof(TYPE));
 			for (uint i = numElements; i > position; i--)
 			{
 				data[i] = tmp[i - 1];
