@@ -1,6 +1,7 @@
 #ifndef _DYNARRAY_H_
 #define _DYNARRAY_H_
 #include "definitions.h"
+#include <assert.h>
 
 #define BLOCK 16
 
@@ -49,14 +50,14 @@ public:
 		data[numElements++] = item;
 	}
 
-	TYPE At(uint position)const
+	bool At(uint position, TYPE& item) const
 	{
-		if (position > capacity)
+		if (position < numElements)
 		{
-			printf("you cant put this position\n");
-			return NULL;
+			item = data[position];
+			return true;
 		}
-		return data[position];
+		return false;
 	}
 
 	uint Capacity() const
@@ -114,16 +115,14 @@ public:
 
 	const TYPE& operator[](uint position)const
 	{
-		assert(position > capacity)
-
-		return data[position];
+		assert(position < numElements)
+			return data[position];
 	}
 
 	TYPE& operator[](uint position)
 	{
-		assert(position > capacity)
-
-		return data[position];
+		assert(position < numElements)
+			return data[position];
 	}
 
 	bool Pop_Back(TYPE& value)
@@ -136,16 +135,14 @@ public:
 		return false;
 	}
 
-	void Flip()//retocar fer un swapp per intercanviar 
+	void Flip()//ok
 	{
-		TYPE* tmp = data;
-		data = new TYPE[capacity];
-		uint tmp2 = 0;
-		for (uint i = (numElements - 1); i >= 0; i--)
+		for (uint i = 0; i < (numElements / 2); i++)
 		{
-			data[tmp2++] = tmp[i];
+			TYPE* tmp = data[i];
+			data[i] = data[numElements - 1 - i];
+			data[numElements - 1 - i] = tmp;
 		}
-		delete[]tmp;
 	}
 
 	void Shrink_to_fit()
@@ -162,25 +159,17 @@ public:
 
 	void Insert(uint position, TYPE item)
 	{
-		numElements++;
-		TYPE* tmp = data;
-		if (numElements > capacity)
+		if (numElements >= capacity)
 		{
+			TYPE* tmp = data;
 			capacity += BLOCK;
-			memcpy(data, tmp, (position) *sizeof(TYPE));
-			for (uint i = numElements; i > position; i--)
-			{
-				data[i] = tmp[i - 1];
-			}
+			data = new TYPE[capacity];
+			memcpy(data, tmp, numElements*sizeof(TYPE));
 			delete[]tmp;
 		}
-		else
-		{	
-			for (uint i = (numElements - 1); i > position; i--)
-			{
-				data[i] = tmp[i - 1];
-			}
-
+		for (uint i = numElements; i > position; i--)
+		{
+			data[i] = data[i - 1];
 		}
 		data[position] = item;
 	}
